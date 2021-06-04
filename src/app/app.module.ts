@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { AffichageLivreComponent } from './composants/affichage-livre/affichage-livre.component';
+import { MenuComponent } from './composants/menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AffichageLivreComponent
+    AffichageLivreComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
