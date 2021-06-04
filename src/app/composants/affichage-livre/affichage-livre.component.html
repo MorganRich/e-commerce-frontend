@@ -1,10 +1,9 @@
 <h3>Liste de livres</h3>
-<ul class="card list-group">
-    <li *ngFor='let l of livres' class="card-body list-group-item">
-        <img src="assets/images/lesfleursdumal.jpg" class="" alt="lesfleursdumal" /><br>
-        <!-- {{ l.image }} -->
-        <div class="fs-3 fw-bold">{{ l.titre }}</div>
-        <div class="fs-5 fst-italic">{{ l.auteur }}</div>
-        <div class="fs-6">{{ l.genre }} </div>
+<ul class>
+    <li *ngFor='let l of livres'>
+        {{ l.titre }}
+        {{ l.auteur }}
+        {{ l.genre }}
+        {{ l.editeur }}
     </li>
 </ul>

@@ -2,7 +2,7 @@ export interface Livres {
 idLivre?: string;
 titre?: string;
 numISBN?: string;
-image?: any;
+image?: string;
 format?: string;
 reference?: string;
 editeur?: string;
