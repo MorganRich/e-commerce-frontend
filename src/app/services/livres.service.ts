@@ -7,7 +7,7 @@ import { Livres } from '../interfaces/livres';
 export class LivresService {
   livres: Livres[] = [
     {
-      idLivre: "200", 
+      idLivre: "200",
       titre: "les fleurs du mal",
       numISBN: "300",
       image: "image",
@@ -18,7 +18,7 @@ export class LivresService {
       auteur: "charles baudelaire",
     },
     {
-      idLivre: "201", 
+      idLivre: "201",
       titre: "les misérables",
       numISBN: "301",
       image: "image",
@@ -32,5 +32,8 @@ export class LivresService {
   constructor() { }
   getAllLivres() {
     return this.livres;
+  }
+  getOneById(id) {
+    return this.livres.find((elt) => elt.idLivre == id);
   }
 }

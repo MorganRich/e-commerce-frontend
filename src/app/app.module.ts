@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 
 import { AffichageLivreComponent } from './composants/affichage-livre/affichage-livre.component';
 import { MenuComponent } from './composants/menu/menu.component';
+import { DetailsLivreComponent } from './composants/details-livre/details-livre.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AffichageLivreComponent,
-    MenuComponent
+    MenuComponent,
+    DetailsLivreComponent
   ],
   imports: [
     BrowserModule,
