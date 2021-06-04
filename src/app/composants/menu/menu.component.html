@@ -15,6 +15,15 @@
                         </li>
                     </ul>
                 </div>
+                <form class="form-group" [formGroup]="barreDeRecherche" (ngSubmit)='rechercherLivre()'>
+                    <input class="form-control" formControlName="recherche" type="text" placeholder="Recherche...">
+                    <button class="btn btn-success" type="submit">Search</button>
+                </form>
+                <div class="navbar-right">
+                    <a class="nav-link" routerLink="panier">
+                        <i class="fas fa-shopping-cart fa-lg"></i>
+                    </a>
+                </div>
             </nav>
         </div>
     </div>

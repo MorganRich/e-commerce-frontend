@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { AffichageLivreComponent } from './composants/affichage-livre/affichage-livre.component';
 import { MenuComponent } from './composants/menu/menu.component';
 import { DetailsLivreComponent } from './composants/details-livre/details-livre.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,9 @@ import { DetailsLivreComponent } from './composants/details-livre/details-livre.
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

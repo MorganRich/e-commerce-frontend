@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  barreDeRecherche = this.fb.group({
+    recherche: ['', Validators.required],
+  });
+
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
 
+  rechercherLivre() {
+    console.log(this.barreDeRecherche.get('recherche').value);
+  }
 }
