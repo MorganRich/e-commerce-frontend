@@ -8,13 +8,15 @@ import { AffichageLivreComponent } from './composants/affichage-livre/affichage-
 import { MenuComponent } from './composants/menu/menu.component';
 import { DetailsLivreComponent } from './composants/details-livre/details-livre.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ResultatRechercheComponent } from './composants/resultat-recherche/resultat-recherche.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AffichageLivreComponent,
     MenuComponent,
-    DetailsLivreComponent
+    DetailsLivreComponent,
+    ResultatRechercheComponent,
   ],
   imports: [
     BrowserModule,

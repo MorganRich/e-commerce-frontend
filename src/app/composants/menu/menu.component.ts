@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -12,12 +13,15 @@ export class MenuComponent implements OnInit {
     recherche: ['', Validators.required],
   });
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
 
   rechercherLivre() {
     console.log(this.barreDeRecherche.get('recherche').value);
+    this.router.navigate(['/recherche/' + this.barreDeRecherche.get('recherche').value]);
   }
 }
