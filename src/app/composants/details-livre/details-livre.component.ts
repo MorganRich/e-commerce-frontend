@@ -25,4 +25,7 @@ export class DetailsLivreComponent implements OnInit {
     )
   }
 
+  rechercherLivre() {
+
+  }
 }
