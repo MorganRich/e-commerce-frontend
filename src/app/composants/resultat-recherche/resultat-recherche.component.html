@@ -1,0 +1,25 @@
+<h3>Nouvelle recherche</h3>
+<form class="mb-4" [formGroup]="userForm" (ngSubmit)="rechercherLivre()">
+    <div class="row">
+        <div class="col">
+            <label for="titre">Titre :</label>
+            <input type="text" id="titre" class="form-control" formControlName="titre">
+        </div>
+        <div class="col">
+            <label for="auteur">Auteur :</label>
+            <input type="text" id="auteur" class="form-control" formControlName="auteur">
+        </div>
+        <div class="col">
+            <label for="genre">Genre :</label>
+            <select id="genre" class="form-control" formControlName="genre">
+                <option value="policier">Policier</option>
+                <option value="...">...</option>
+            </select>
+        </div>
+        <div class="col">
+            <button type="submit" class="btn btn-primary mt-4" [disabled]="userForm.invalid">Rechercher</button>
+        </div>
+    </div>
+</form>
+
+<h3>Résultat de la recherche</h3>

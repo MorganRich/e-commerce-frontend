@@ -77,4 +77,7 @@ export class LivresService {
   getAllLivres() {
     return this.livres;
   }
+  getOneById(id) {
+    return this.livres.find((elt) => elt.idLivre == id);
+  }
 }
