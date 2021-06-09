@@ -9,6 +9,8 @@ import { MenuComponent } from './composants/menu/menu.component';
 import { DetailsLivreComponent } from './composants/details-livre/details-livre.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ResultatRechercheComponent } from './composants/resultat-recherche/resultat-recherche.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CreationCompteComponent } from './composants/creation-compte/creation-compte.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +19,14 @@ import { ResultatRechercheComponent } from './composants/resultat-recherche/resu
     MenuComponent,
     DetailsLivreComponent,
     ResultatRechercheComponent,
+    CreationCompteComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
