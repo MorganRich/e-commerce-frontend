@@ -1,9 +1,63 @@
-<h3>Liste de livres</h3>
-<ul class>
-    <li *ngFor='let l of livres'>
-        {{ l.titre }}
-        {{ l.auteur }}
-        {{ l.genre }}
-        {{ l.editeur }}
-    </li>
-</ul>
+<div class="container">
+    <h3>Meilleures ventes</h3>
+    <div id="myCarousel" class="row carousel slide border" data-ride="carousel">
+
+        <!-- Indicateurs -->
+        <ul class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+          </ul>
+
+        <div *ngFor='let l of livres' class="card col-sm-4 align-items-center m-4 pt-3 bg-light carousel-inner" style="width:250px">
+           
+            <img class="d-block w-100 card-img-top" src="assets/images/lesfleursdumal.jpg" alt="Card image" style="width:100%">
+            <div class="card-body text-center">
+                <div class="fs-5 fw-bold">{{ l.titre }}</div>
+                <div class="fs-5 fst-italic">{{ l.auteur}}</div>
+                <div class="fs-6">{{ l.genre }} </div><br>
+                <a href="#" class="btn btn-primary"><i class="fas fa-shopping-cart"> Acheter</i></a>
+            </div>
+            </div>
+
+            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+           </div>
+        </div><br>
+        <div class="container">
+            <h3>Nouveautés</h3>
+            <div id="myCarousel" class="row carousel slide border" data-ride="carousel">
+        
+                <!-- Indicateurs -->
+                <ul class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                  </ul>
+        
+                <div *ngFor='let l of livres' class="card col-sm-4 align-items-center m-4 pt-3 bg-light carousel-inner" style="width:250px">
+                   
+                    <img class="d-block w-100 card-img-top" src="assets/images/lesfleursdumal.jpg" alt="Card image" style="width:100%">
+                    <div class="card-body text-center">
+                        <div class="fs-5 fw-bold">{{ l.titre }}</div>
+                        <div class="fs-5 fst-italic">{{ l.auteur}}</div>
+                        <div class="fs-6">{{ l.genre }} </div><br>
+                        <a href="#" class="btn btn-primary"><i class="fas fa-shopping-cart"> Acheter</i></a>
+                    </div>
+                    </div>
+        
+                    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                   </div>
+                </div>
+        
