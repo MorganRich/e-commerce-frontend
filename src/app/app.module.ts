@@ -9,6 +9,7 @@ import { MenuComponent } from './composants/menu/menu.component';
 import { DetailsLivreComponent } from './composants/details-livre/details-livre.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ResultatRechercheComponent } from './composants/resultat-recherche/resultat-recherche.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ResultatRechercheComponent } from './composants/resultat-recherche/resu
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
