@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Livres } from '../interfaces/livres';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -8,84 +9,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LivresService {
-  private url = 'http://localhost:3000/livre/'
 
+  private url = 'http://localhost:3000/livre/';
   constructor(private http: HttpClient) { }
 
-  livres: Livres[] = [
-    {
-      idLivre: "200", 
-      titre: "Les Fleurs du Mal",
-      numISBN: "300",
-      image: "image",
-      format: "Poche",
-      reference: "200lfdm",
-      editeur: "Flamarion",
-      genre: "Poésie",
-      auteur: "Charles Baudelaire",
-    },
-    {
-      idLivre: "201", 
-      titre: "Les Misérables",
-      numISBN: "301",
-      image: "image",
-      format: "Poche",
-      reference: "201lm",
-      editeur: "Flamarion",
-      genre: "Roman",
-      auteur: "Victor Hugo",
-    },
-    {
-      idLivre: "202",
-      titre: "Sur La Route",
-      numISBN: "302",
-      image: "image",
-      format: "Poche",
-      reference: "202slr",
-      editeur: "Flamarion",
-      genre: "Roman",
-      auteur: "Jack Kerouac",
-    },
-    {
-      idLivre: "200",
-      titre: "Les Fleurs du Mal",
-      numISBN: "300",
-      image: "../assets/images/lesfleursdumal.jpg",
-      format: "Poche",
-      reference: "200lfdm",
-      editeur: "Flamarion",
-      genre: "Poèsie",
-      auteur: "Charles Baudelaire",
-    },
-    {
-      idLivre: "201",
-      titre: "Les Misérables",
-      numISBN: "301",
-      image: "image",
-      format: "Poche",
-      reference: "201lm",
-      editeur: "Flamarion",
-      genre: "Roman",
-      auteur: "Victor Hugo",
-    },
-    {
-      idLivre: "202",
-      titre: "Sur La Route",
-      numISBN: "302",
-      image: "image",
-      format: "Poche",
-      reference: "202slr",
-      editeur: "Flamarion",
-      genre: "Roman",
-      auteur: "Jack Kerouac",
-    },
-  ];
-
   getAllLivres() {
-    return this.livres;
+     return this.http.get<Array<Livres>>(this.url);
   }
   getOneById(id) {
-    return this.livres.find((elt) => elt.idLivre == id);
+    return this.http.get<Livres>(this.url + id)
   }
   
   searchByTitre(recherche: string) {

@@ -4,8 +4,9 @@ titre?: string;
 numISBN?: string;
 image?: string;
 format?: string;
-reference?: string;
+reference_article?: number;
 editeur?: string;
 genre?: string;
 auteur?: string;
+prixUnitaire?: number;
 }
