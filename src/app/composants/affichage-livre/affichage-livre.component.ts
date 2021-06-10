@@ -16,8 +16,8 @@ export class AffichageLivreComponent implements OnInit {
   panier: Panier = {};
   lignePanier: LignePanier = {
     quantiteArticle: 1,
-    referenceArticle: 0,
-    prixTotalLigne: 0
+    prixTotalLigne: 0,
+    livre : {}
   };
   livres: Livres[] = [];
   livre: Livres = {};
@@ -45,7 +45,7 @@ export class AffichageLivreComponent implements OnInit {
     return this.articleForm.get('quantite');
   }
   openModal(i) {
-    this.livre = i;
+    this.lignePanier.livre = i;
     this.showModal = true; // Show-Hide Modal Check
 
 
@@ -77,7 +77,8 @@ export class AffichageLivreComponent implements OnInit {
       lignesPanier.push({
         quantiteArticle: this.lignePanier.quantiteArticle,
         referenceArticle: this.livre.reference_article,
-        prixTotalLigne: this.lignePanier.quantiteArticle * this.livre.prixUnitaire
+        prixTotalLigne: this.lignePanier.quantiteArticle * this.livre.prixUnitaire,
+        livre: this.lignePanier.livre,
       });
     } else {
       let l = lignesPanier.find(elt => elt.referenceArticle === this.livre.reference_article);
@@ -88,7 +89,8 @@ export class AffichageLivreComponent implements OnInit {
         lignesPanier.push({
           quantiteArticle: this.lignePanier.quantiteArticle,
           referenceArticle: this.livre.reference_article,
-          prixTotalLigne: this.lignePanier.quantiteArticle * this.livre.prixUnitaire
+          prixTotalLigne: this.lignePanier.quantiteArticle * this.livre.prixUnitaire,
+          livre: this.lignePanier.livre,
         });
       }
     }

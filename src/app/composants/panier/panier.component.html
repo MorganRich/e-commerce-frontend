@@ -10,40 +10,24 @@
 
                     <h5 class="mb-4">Produit(s)</h5>
 
-                    <div class="row mb-4">
+                    <div *ngFor="let lg of lignePanier, let i = index" class="row mb-4">
                         <div class="col-md-5 col-lg-3 col-xl-3">
-                            <div>article</div>
+                            <div>{{lg.livre.titre}}</div>
                         </div>
                         <div class="col-md-7 col-lg-9 col-xl-9">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <span class="def-number-input number-input safari_only mb-0 w-100">
-                                            <input class="quantity" min="0" name="quantity" value="1" type="number">
-                                        </span>
-                                        <button class="btn btn-danger m-2"><i class="fas fa-times"></i></button>
-                                  </div>
-                                <p class="mb-0"><span><strong>prix</strong></span></p>
-                              </div>
-                        </div>
-                    </div>
-                    <hr class="mb-4">
-                    <div class="row mb-4">
-                        <div class="col-md-5 col-lg-3 col-xl-3">
-                            <div>article</div>
-                        </div>
-                        <div class="col-md-7 col-lg-9 col-xl-9">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <span class="def-number-input number-input safari_only mb-0 w-100">
-                                            <input class="quantity" min="0" name="quantity" value="1" type="number">
-                                        </span>
-                                        <button class="btn btn-danger m-2"><i class="fas fa-times"></i></button>
-                                    </div>
-                                    <p class="mb-0"><span><strong>prix</strong></span></p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <button class="col-1 btn btn-secondary" (click)="DecQuantite(i)">-</button>
+                                    <span class="col-1">{{ lg.quantiteArticle }}</span>
+                                    <button class="col-1 btn btn-secondary" (click)="IncQuantite(i)">+</button>
+                                    <button class="btn btn-danger m-2" (click)="Delete(i)"><i class="fas fa-times"></i></button>
                                 </div>
+                                <p class="mb-0"><span><strong>{{lg.prixTotalLigne}}€</strong></span></p>
+                            </div>
                         </div>
+                        <hr class="mb-4">
                     </div>
-
+                    
                 </div>
             </div>
             <!-- Card -->
