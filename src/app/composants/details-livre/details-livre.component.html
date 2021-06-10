@@ -1,15 +1,13 @@
-<div class="container">
-    <div class="row">
-        <h1 class="col-12 text-center mt-2">
-            {{ livre.titre }}
-        </h1>
-    </div>
+<div class="container mt-5">
     <div class="row">
         <div class="col-3">
             <img class="d-block w-100 card-img-top" src="assets/images/lesfleursdumal.jpg" alt="Card image"
                 style="width:100%">
         </div>
         <div class="col-9">
+            <div class="row">
+                <h3 class="col">{{ livre.titre }}</h3>
+            </div>
             <div class="row">
                 <div class="col">Auteur : {{ livre.prenom }} {{ livre.nom }}</div>
             </div>
