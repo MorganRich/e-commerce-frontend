@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Livres } from '../interfaces/livres';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -8,25 +9,25 @@ export class LivresService {
   livres: Livres[] = [
     {
       idLivre: "200", 
-      titre: "les fleurs du mal",
+      titre: "Les Fleurs du Mal",
       numISBN: "300",
       image: "image",
-      format: "poche",
+      format: "Poche",
       reference: "200lfdm",
-      editeur: "flamarion",
-      genre: "poesie",
-      auteur: "charles baudelaire",
+      editeur: "Flamarion",
+      genre: "Poésie",
+      auteur: "Charles Baudelaire",
     },
     {
       idLivre: "201", 
-      titre: "les misérables",
+      titre: "Les Misérables",
       numISBN: "301",
       image: "image",
-      format: "poche",
+      format: "Poche",
       reference: "201lm",
-      editeur: "flamarion",
-      genre: "roman",
-      auteur: "victor hugo",
+      editeur: "Flamarion",
+      genre: "Roman",
+      auteur: "Victor Hugo",
     },
     {
       idLivre: "202", 
@@ -72,12 +73,13 @@ export class LivresService {
       genre: "Roman",
       auteur: "Jack Kerouac",
     },
-  ]
+  ];
+
+  
   constructor() { }
   getAllLivres() {
     return this.livres;
   }
   getOneById(id) {
     return this.livres.find((elt) => elt.idLivre == id);
-  }
-}
+  }}
