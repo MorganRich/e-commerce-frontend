@@ -13,19 +13,12 @@ export class DetailsLivreComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private livresService: LivresService,
+    private livresService: LivresService
   ) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(
-      (value) => {
-        let idLivre = value.get('id');
-        this.livre = this.livresService.getOneById(idLivre);
-      }
-    )
+  
   }
 
-  rechercherLivre() {
-
-  }
+  
 }
