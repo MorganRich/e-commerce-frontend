@@ -1,12 +1,40 @@
-<div id="modal-content-wrapper">
-    <header id="modal-header">
-        <h1 id="modal-title">Are you sure you want to logout?</h1>
-    </header>
-    <section id="modal-body">
-        <p>If you logout bad things might happen, but don't mind me, I'm just the description in a modal...</p>
-    </section>
-    <footer id="modal-footer">
-       
-        
-    </footer>
+<div class="container">
+    <div class="row">
+        <h1 class="col-12 text-center mt-2">
+            {{ livre.titre }}
+        </h1>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <img class="d-block w-100 card-img-top" src="assets/images/lesfleursdumal.jpg" alt="Card image"
+                style="width:100%">
+        </div>
+        <div class="col-9">
+            <div class="row">
+                <div class="col">Auteur : {{ livre.prenom }} {{ livre.nom }}</div>
+            </div>
+            <div class="row">
+                <div class="col">Genre : {{ livre.type }}</div>
+            </div>
+            <div class="row">
+                <div class="col">Format : {{ livre.format }}</div>
+            </div>
+            <div class="row">
+                <div class="col">Résumé : {{ livre.resume }}</div>
+            </div>
+            <div class="row">
+                <div class="col">Prix : {{ livre.prixUnitaire }} €</div>
+            </div>
+            <div class="row">
+                <div class="col">Quantité restante en stock : {{ livre.quantiteEnStock }}</div>
+            </div>
+            <div class="row">
+                <button class="col-1 btn btn-secondary" (click)="DecQuantite()">-</button>
+                <span class="col-1">{{ quantiteArticle }}</span>
+                <button class="col-1 btn btn-secondary" (click)="IncQuantite()">+</button>
+
+            </div>
+            <button class="btn btn-success" (click)="ajouterPanier()">Ajouter au panier</button>
+        </div>
+    </div>
 </div>

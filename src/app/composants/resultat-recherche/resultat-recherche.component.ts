@@ -13,13 +13,13 @@ export class ResultatRechercheComponent implements OnInit {
   userForm!: FormGroup;
   resultatRecherche: Livres[] = [];
   nbResultatRecherche: number = 0;
-  
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private route:ActivatedRoute,
+    private route: ActivatedRoute,
     private livresService: LivresService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
@@ -48,6 +48,9 @@ export class ResultatRechercheComponent implements OnInit {
       }
     );
     // this.router.navigate(['/recherche'], { queryParams: { titre: 'titre', auteur: 'auteur', genre: 'genre' } });
+  }
+  afficherDetails(idLivre: string) {
+    this.router.navigate(['/livres/' + idLivre]);
   }
 
 }
