@@ -9,8 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ResultatRechercheComponent } from './composants/resultat-recherche/resultat-recherche.component';
 import { ConnexionComponent } from './composants/connexion/connexion.component';
 import { HttpClientModule } from '@angular/common/http';
-
-
+import { CreationCompteComponent } from './composants/creation-compte/creation-compte.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     DetailsLivreComponent,
     ResultatRechercheComponent,
     ConnexionComponent,
-
+    CreationCompteComponent,
   ],
   imports: [
     BrowserModule,

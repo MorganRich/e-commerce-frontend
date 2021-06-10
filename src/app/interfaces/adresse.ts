@@ -1,8 +1,7 @@
 export interface Adresse {
+    typeDeVoie?: string;
     numeroRue?: string;
-    rue?: string;
-    ville?: string;
+    complement?: string;
     codePostal?: string;
-    complementAdresse?: string;
+    ville?: string;
 }
-

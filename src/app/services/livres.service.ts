@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Livres } from '../interfaces/livres';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class LivresService {
+  private url = 'http://localhost:3000/livre/'
+
+  constructor(private http: HttpClient) { }
+
   livres: Livres[] = [
     {
       idLivre: "200", 
@@ -30,7 +36,7 @@ export class LivresService {
       auteur: "Victor Hugo",
     },
     {
-      idLivre: "202", 
+      idLivre: "202",
       titre: "Sur La Route",
       numISBN: "302",
       image: "image",
@@ -41,7 +47,7 @@ export class LivresService {
       auteur: "Jack Kerouac",
     },
     {
-      idLivre: "200", 
+      idLivre: "200",
       titre: "Les Fleurs du Mal",
       numISBN: "300",
       image: "../assets/images/lesfleursdumal.jpg",
@@ -52,7 +58,7 @@ export class LivresService {
       auteur: "Charles Baudelaire",
     },
     {
-      idLivre: "201", 
+      idLivre: "201",
       titre: "Les Misérables",
       numISBN: "301",
       image: "image",
@@ -63,7 +69,7 @@ export class LivresService {
       auteur: "Victor Hugo",
     },
     {
-      idLivre: "202", 
+      idLivre: "202",
       titre: "Sur La Route",
       numISBN: "302",
       image: "image",
@@ -75,11 +81,15 @@ export class LivresService {
     },
   ];
 
-  
-  constructor() { }
   getAllLivres() {
     return this.livres;
   }
   getOneById(id) {
     return this.livres.find((elt) => elt.idLivre == id);
-  }}
+  }
+  
+  searchByTitre(recherche: string) {
+    console.log(this.url + "titre/" + recherche);
+    return this.http.get<Array<Livres>>(this.url + "titre/" + recherche);
+  }
+}
