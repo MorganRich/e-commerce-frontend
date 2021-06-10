@@ -1,0 +1,26 @@
+<h1>Page d'authentification</h1>
+<form #monForm=ngForm (ngSubmit)="connexion()">
+
+    <div>
+        Email : <input type=text name=nom [(ngModel)]=personne.email required #nom=ngModel>
+        <span [hidden]="nom.valid || nom.pristine">
+            Le Email est obligatoire
+        </span>
+    </div>
+
+    <div>
+        Mot de passe : <input type=password name=prenom [(ngModel)]=personne.motDePasse required #prenom=ngModel>
+        <span [hidden]="prenom.valid || prenom.pristine">
+            Le mot de passe est obligatoire
+        </span>
+    </div>
+    <div>
+        <button class="btn btn-success" [disabled]="!monForm.valid">
+            Connexion
+        </button>
+    </div>
+</form>
+<div id=error>
+    {{ erreur }}
+</div>
+
