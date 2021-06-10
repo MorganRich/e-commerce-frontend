@@ -20,7 +20,6 @@ export class ResultatRechercheComponent implements OnInit {
     private route: ActivatedRoute,
     private livresService: LivresService
   ) { }
-// achref
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
       titre: [this.route.snapshot.params.param],
@@ -35,11 +34,10 @@ export class ResultatRechercheComponent implements OnInit {
       }
     );
   }
-// achref
+  afficherDetails(idLivre: string) {
+    this.router.navigate(['/livres/' + idLivre]);
+  }
   rechercherLivre() {
-    // console.log(this.userForm.get('titre').value);
-    // console.log(this.userForm.get('auteur').value);
-    // console.log(this.userForm.get('genre').value);
     this.livresService.searchByTitre(this.userForm.get('titre').value).subscribe(
       (res) => {
         this.resultatRecherche = res;
@@ -47,11 +45,8 @@ export class ResultatRechercheComponent implements OnInit {
         console.log(this.resultatRecherche);
       }
     );
-    // this.router.navigate(['/recherche'], { queryParams: { titre: 'titre', auteur: 'auteur', genre: 'genre' } });
   }
-  afficherDetails(idLivre: string) {
-    this.router.navigate(['/livres/' + idLivre]);
-  }
+
 
 }
 
