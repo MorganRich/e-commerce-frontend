@@ -33,7 +33,8 @@
                 <div class="fs-5 fw-bold">{{ l.titre }}</div>
                 <div class="fs-5 fst-italic">{{ l.prenom }} {{ l.nom }}</div>
                 <div class="fs-6">{{ l.type }} </div><br>
-                <btn class="btn btn-primary">Ajouter au panier</btn>
+                <btn class="btn btn-success">Ajouter au panier</btn>
+                <btn class="btn btn-primary" (click)="afficherDetails(l.idLivre)">Détails</btn>
             </div>
         </div>
     </div>
