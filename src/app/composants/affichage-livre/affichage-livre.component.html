@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container pt-3">
     <h3>Meilleures ventes</h3>
-    <div id="myCarousel" class="row carousel slide border" data-ride="carousel">
+    <div id="myCarousel" class="row carousel slide border rounded border-2" data-ride="carousel">
 
         <!-- Indicateurs -->
         <ul class="carousel-indicators">
@@ -15,21 +15,24 @@
             <div class="card-body text-center">
                 <div class="fs-5 fw-bold">{{ l.titre }}</div>
                 <div class="fs-5 fst-italic">{{ l.auteur}}</div>
-                <div class="fs-6">{{ l.genre }} </div><br>
-                <a href="#" class="btn btn-primary"><i class="fas fa-shopping-cart"> Acheter</i></a>
+                <div class="fs-6">{{ l.genre }}</div><br>
+                <a href="#" class="btn btn-warning m-2"><i class="fas fa-shopping-cart"> Acheter</i>
+                </a><a href="#" class="btn btn-primary"><i class="fas fa-info"> Détails</i></a>
             </div>
-            </div>
-
-            <!-- <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+        </div>
+        <a>
+            <a class="fas fa-chevron-circle-left fa-3x" href="#myCarousel" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+            </a>
+            <a class="fas fa-chevron-circle-right fa-3x" href="#myCarousel" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
-              </a> -->
-           </div>
-        </div><br>
+            </a>
+        </a>
+    </div>
+</div><br>
+
         <div class="container">
             <h3>Nouveautés</h3>
             <div id="myCarousel" class="row carousel slide border" data-ride="carousel">
@@ -108,3 +111,8 @@
                     </div>
                   </div>
                 </div>
+            </a>
+        </a>
+    </div>
+</div>
+
