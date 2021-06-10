@@ -9,6 +9,9 @@ import { DetailsLivreComponent } from './composants/details-livre/details-livre.
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ResultatRechercheComponent } from './composants/resultat-recherche/resultat-recherche.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ConnexionComponent } from './composants/connexion/connexion.component';
+import { CreationCompteComponent } from './composants/creation-compte/creation-compte.component';
+import { PanierComponent } from './composants/panier/panier.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +20,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     MenuComponent,
     DetailsLivreComponent,
     ResultatRechercheComponent,
+    ConnexionComponent,
+    CreationCompteComponent,
+    PanierComponent,
   ],
   imports: [
     BrowserModule,
