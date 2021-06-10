@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { LignePanier } from 'src/app/interfaces/lignePanier';
+import { Livres } from 'src/app/interfaces/livres';
+import { Panier } from 'src/app/interfaces/panier';
 
 @Component({
   selector: 'app-panier',
