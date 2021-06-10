@@ -18,7 +18,7 @@ export class ResultatRechercheComponent implements OnInit {
     private route: ActivatedRoute,
     private livresService: LivresService
   ) { }
-
+// achref
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
       titre: [''],
@@ -26,7 +26,7 @@ export class ResultatRechercheComponent implements OnInit {
       genre: ['']
     });
   }
-
+// achref
   rechercherLivre() {
     console.log(this.userForm.get('titre').value);
     console.log(this.userForm.get('auteur').value);
@@ -38,4 +38,4 @@ export class ResultatRechercheComponent implements OnInit {
   }
 
 }
-// achref
+
