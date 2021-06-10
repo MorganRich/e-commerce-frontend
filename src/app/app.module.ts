@@ -4,8 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
+
 
 import { AffichageLivreComponent } from './composants/affichage-livre/affichage-livre.component';
 import { MenuComponent } from './composants/menu/menu.component';
@@ -29,8 +28,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     HttpClientModule,
     NoopAnimationsModule,
-    MatButtonModule,
-    MatDialogModule
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

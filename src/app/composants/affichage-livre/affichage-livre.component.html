@@ -60,7 +60,7 @@
                       </a>
                    </div>
                 </div>
-
+ <!-- Modal  -->
                 <div class="modal c" id="myModal" [style.display]="showModal ? 'block' : 'none'">
                   <div class="modal-dialog">
                     <div class="modal-content">
@@ -98,7 +98,7 @@
                       
                      
                      <div>{{ livre.prixUnitaire}}€</div>
-                      <button class="btn btn-primary"  ><i class="fas fa-shopping-cart"> Acheter</i></button>
+                      <button class="btn btn-primary" (click) = "ajouterPanier(livre)" ><i class="fas fa-shopping-cart"> Acheter</i></button>
                     </form>
                       <!-- Modal footer -->
                       <div class="modal-footer">
