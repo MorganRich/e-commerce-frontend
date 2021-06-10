@@ -55,21 +55,45 @@ export class AffichageLivreComponent implements OnInit {
     this.showModal = false;
   }
 
-  IncQuantite (qtt) {
-    if(this.lignePanier.quantiteArticle < 10)
-   this.lignePanier.quantiteArticle = qtt +1;
-  
+  IncQuantite(qtt) {
+    if (this.lignePanier.quantiteArticle < 10)
+      this.lignePanier.quantiteArticle = qtt + 1;
+
   }
 
-  DecQuantite (qtt) {
-    if(this.lignePanier.quantiteArticle > 1)
-   this.lignePanier.quantiteArticle = qtt -1;
-  
+  DecQuantite(qtt) {
+    if (this.lignePanier.quantiteArticle > 1)
+      this.lignePanier.quantiteArticle = qtt - 1;
+
   }
 
 
   ajouterPanier(livre) {
-    console.log(livre)
+    const lignesPanier = (() => {
+      const fieldValue = localStorage.getItem('panier');
+      return fieldValue === null ? [] : JSON.parse(fieldValue);
+    })();
+    if (lignesPanier.length == 0) {
+      lignesPanier.push({
+        quantiteArticle: this.lignePanier.quantiteArticle,
+        referenceArticle: this.livre.reference_article,
+        prixTotalLigne: this.lignePanier.quantiteArticle * this.livre.prixUnitaire
+      });
+    } else {
+      let l = lignesPanier.find(elt => elt.referenceArticle === this.livre.reference_article);
+      if (l) {
+        lignesPanier[lignesPanier.indexOf(l)].quantiteArticle += this.lignePanier.quantiteArticle
+        lignesPanier[lignesPanier.indexOf(l)].prixTotalLigne = lignesPanier[lignesPanier.indexOf(l)].quantiteArticle * this.livre.prixUnitaire
+      } else {
+        lignesPanier.push({
+          quantiteArticle: this.lignePanier.quantiteArticle,
+          referenceArticle: this.livre.reference_article,
+          prixTotalLigne: this.lignePanier.quantiteArticle * this.livre.prixUnitaire
+        });
+      }
+    }
+    localStorage.setItem('panier', JSON.stringify(lignesPanier));
   }
+
 
 }
