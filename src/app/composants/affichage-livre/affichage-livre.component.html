@@ -34,7 +34,6 @@
     </a>
   </div>
 </div><br>
-
 <div class="container">
   <h3>Nouveautés</h3>
   <div id="myCarousel" class="row carousel slide border" data-ride="carousel">
@@ -67,7 +66,6 @@
     </a>
   </div>
 </div>
-
 <div class="modal c" id="myModal" [style.display]="showModal ? 'block' : 'none'">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -75,7 +73,7 @@
         <!-- Modal Header -->
         <div class="modal-header">
           <h4 class="modal-title"> {{ livre.titre }}</h4>
-          <p class="isnb"> {{ livre.numISBN }}</p>
+          <p class="isnb"> {{ livre.numISBN13 }}</p>
           <button type="button" class="close" data-dismiss="modal" (click)="hide()">&times;</button>
         </div>
 
