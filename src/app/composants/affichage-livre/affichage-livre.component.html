@@ -6,9 +6,9 @@
       <img class="d-block w-100 card-img-top" [src]="l.image" alt="Card image" style="width:100%">
       <div class="card-body text-center">
         <div class="fs-5 fw-bold">{{ l.titre }}</div>
-        <div class="fs-5 fst-italic">{{ l.auteur}}</div>
-        <div class="fs-6">{{ l.genre }}</div><br>
-        <button routerLink="#" class="btn btn-primary" (click)="afficherDetails(l.idLivre)"><i class="fas fa-info"> Afficher les détails</i></button>
+        <div class="fs-5 fst-italic">{{ l.prenom}} {{ l.nom}}</div>
+        <div class="fs-6">{{ l.type }}</div><br>
+        <button routerLink="#" class="btn btn-primary" (click)="afficherDetails(l.idLivre)"><i class="fas fa-info">Afficher les détails</i></button>
         <button class="btn btn-warning m-2"><i class="fas fa-shopping-cart"> Ajouter au panier</i></button>
       </div>
     </div>

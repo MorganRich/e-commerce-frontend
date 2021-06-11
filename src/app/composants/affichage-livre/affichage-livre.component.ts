@@ -34,25 +34,22 @@ export class AffichageLivreComponent implements OnInit {
   ) {
     this.articleForm.controls['quantite'].setValue(this.defaultQuantityValue, { onlySelf: true });
   }
-
   ngOnInit(): void {
     this.livresService.getAllLivres().subscribe(
       res => {
         for (let r of res) {
           this.livres.push(r);
+          console.log( this.livres);
         }
       }
     )
   }
-
   get quantite(): AbstractControl | null {
     return this.articleForm.get('quantite');
   }
   openModal(i) {
     this.lignePanier.livre = i;
     this.showModal = true; // Show-Hide Modal Check
-
-
   }
   //Bootstrap Modal Close event
   hide() {
@@ -64,16 +61,11 @@ export class AffichageLivreComponent implements OnInit {
   IncQuantite(qtt) {
     if (this.lignePanier.quantiteArticle < 10)
       this.lignePanier.quantiteArticle = qtt + 1;
-
   }
-
   DecQuantite(qtt) {
     if (this.lignePanier.quantiteArticle > 1)
       this.lignePanier.quantiteArticle = qtt - 1;
-
   }
-
-
   ajouterPanier(livre) {
     const lignesPanier = (() => {
       const fieldValue = localStorage.getItem('panier');
@@ -102,6 +94,4 @@ export class AffichageLivreComponent implements OnInit {
     }
     localStorage.setItem('panier', JSON.stringify(lignesPanier));
   }
-
-
 }
