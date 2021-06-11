@@ -1,26 +1,32 @@
-<h1>Page d'authentification</h1>
-<form #monForm=ngForm (ngSubmit)="connexion()">
-
-    <div>
-        Email : <input type=text name=nom [(ngModel)]=personne.email required #nom=ngModel>
-        <span [hidden]="nom.valid || nom.pristine">
+<h3 class="mt-2">Page d'authentification</h3>
+<form class="container" #monForm=ngForm (ngSubmit)="connexion()">
+    <div class="row">
+        <div class="col-4">
+            <label for="email">Email :</label>
+            <input id="email" class="form-control" type="email" name=email [(ngModel)]=personne.email required
+                #email=ngModel>
+        </div>
+        <span [hidden]="email.valid || email.pristine" style="color: red;">
             Le Email est obligatoire
         </span>
     </div>
-
-    <div>
-        Mot de passe : <input type=password name=prenom [(ngModel)]=personne.motDePasse required #prenom=ngModel>
-        <span [hidden]="prenom.valid || prenom.pristine">
+    <div class="row">
+        <div class="col-4">
+            <label for="motDePasse">Mot de passe :</label>
+            <input id="motDePasse" class="form-control" type=password name=motDePasse [(ngModel)]=personne.motDePasse
+                required #motDePasse=ngModel>
+        </div>
+        <span [hidden]="motDePasse.valid || motDePasse.pristine" style="color: red;">
             Le mot de passe est obligatoire
         </span>
     </div>
-    <div>
-        <button class="btn btn-success" [disabled]="!monForm.valid">
+    <div class="row" style="color: red;">
+        <span class="col-4"> {{ erreur }}</span>
+    </div>
+    <div class="row">
+        <button class="btn btn-success col-1 m-2" [disabled]="!monForm.valid">
             Connexion
         </button>
+        <button class="btn btn-secondary col-2 m-2" type="button" (click)="creationCompte()">Créer un compte</button>
     </div>
 </form>
-<div id=error>
-    {{ erreur }}
-</div>
-

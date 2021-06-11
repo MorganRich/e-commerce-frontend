@@ -12,6 +12,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ConnexionComponent } from './composants/connexion/connexion.component';
 import { CreationCompteComponent } from './composants/creation-compte/creation-compte.component';
 import { PanierComponent } from './composants/panier/panier.component';
+import { CompteComponent } from './composants/compte/compte.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { PanierComponent } from './composants/panier/panier.component';
     ConnexionComponent,
     CreationCompteComponent,
     PanierComponent,
+    CompteComponent,
   ],
   imports: [
     BrowserModule,
