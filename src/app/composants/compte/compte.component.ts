@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Commande } from 'src/app/interfaces/commande';
 import { Personne } from 'src/app/interfaces/personne';
 import { CompteService } from 'src/app/services/compte.service';
 
@@ -11,6 +12,8 @@ import { CompteService } from 'src/app/services/compte.service';
 })
 export class CompteComponent implements OnInit {
   compte: Personne = {}
+  commandes: Commande[] = []
+
   compteForm = this.fb.group({
     nom: ['', Validators.required],
     prenom: ['', Validators.required],
@@ -68,6 +71,12 @@ export class CompteComponent implements OnInit {
         });
       }
     )
+    this.compteService.searchCommandes(this.compte.idUtilisateur).subscribe(
+      (res) => {
+        this.commandes = res;
+        console.log(this.commandes[0].lignesCommande[0].nom);
+      }
+    )
   }
   modifierCompte() {
     this.router.navigateByUrl('/compte/creation');
@@ -76,7 +85,6 @@ export class CompteComponent implements OnInit {
     localStorage.removeItem('user');
     this.router.navigateByUrl('/livres');
   }
-
   get adresses(): FormArray {
     return this.compteForm.controls.adresses as FormArray;
   }
