@@ -81,9 +81,10 @@ export class CreationCompteComponent implements OnInit {
     console.log(this.compte);
     this.compteService.addCompte(this.compte).subscribe(
       (res) => {
-        console.log(res);
+        localStorage.setItem('user', JSON.stringify(res));
       }
     )
+    this.router.navigateByUrl('/');
   }
   modifierCompte() {
     console.log(this.compte);

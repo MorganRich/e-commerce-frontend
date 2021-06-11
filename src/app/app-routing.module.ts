@@ -11,6 +11,7 @@ import { ResultatRechercheComponent } from './composants/resultat-recherche/resu
 
 
 const routes: Routes = [
+  { path: "", component: AffichageLivreComponent },
   { path: "livres", component: AffichageLivreComponent },
   { path: "livres/:id", component: DetailsLivreComponent },
   { path: "recherche/:param", component: ResultatRechercheComponent},
