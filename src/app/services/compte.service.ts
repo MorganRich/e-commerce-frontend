@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Adresse } from '../interfaces/adresse';
 import { Personne } from '../interfaces/personne';
 
 @Injectable({
@@ -12,5 +13,12 @@ export class CompteService {
 
   addCompte(p: Personne) {
     return this.http.post<Personne>(this.url, p);
+  }
+  modifyCompte(p: Personne) {
+    return this.http.put<Personne>(this.url + p.idUtilisateur, p);
+  }
+  searchAdresse(idUser: number) {
+    console.log(this.url + idUser + "/adresses");
+    return this.http.get<Array<Adresse>>(this.url + idUser + "/adresses");
   }
 }
