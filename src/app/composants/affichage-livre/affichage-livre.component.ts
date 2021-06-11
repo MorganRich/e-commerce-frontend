@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LignePanier } from 'src/app/interfaces/lignePanier';
 import { Livres } from 'src/app/interfaces/livres';
 import { Panier } from 'src/app/interfaces/panier';
@@ -17,7 +18,7 @@ export class AffichageLivreComponent implements OnInit {
   lignePanier: LignePanier = {
     quantiteArticle: 1,
     prixTotalLigne: 0,
-    livre : {}
+    livre: {}
   };
   livres: Livres[] = [];
   livre: Livres = {};
@@ -27,7 +28,10 @@ export class AffichageLivreComponent implements OnInit {
   defaultQuantityValue: number = 1;
 
   showModal: boolean = false;
-  constructor(private livresService: LivresService) {
+  constructor(
+    private livresService: LivresService,
+    private router: Router
+  ) {
     this.articleForm.controls['quantite'].setValue(this.defaultQuantityValue, { onlySelf: true });
   }
 
@@ -54,7 +58,9 @@ export class AffichageLivreComponent implements OnInit {
   hide() {
     this.showModal = false;
   }
-
+  afficherDetails(idLivre: string) {
+    this.router.navigate(['/livres/' + idLivre]);
+  }
   IncQuantite(qtt) {
     if (this.lignePanier.quantiteArticle < 10)
       this.lignePanier.quantiteArticle = qtt + 1;
