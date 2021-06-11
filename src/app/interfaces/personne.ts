@@ -1,7 +1,7 @@
 import { Adresse } from "./adresse";
 
 export interface Personne {
-    id?: number;
+    idUtilisateur?: number;
     nom?: string;
     prenom?: string;
     adresse?: Adresse[];

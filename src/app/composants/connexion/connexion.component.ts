@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Personne } from 'src/app/interfaces/personne';
 import { AuthentificationService } from 'src/app/services/authentification.service';
@@ -10,18 +9,20 @@ import { AuthentificationService } from 'src/app/services/authentification.servi
   styleUrls: ['./connexion.component.css']
 })
 export class ConnexionComponent implements OnInit {
-  personne:Personne = {}; 
+  personne: Personne = {};
   erreur = "";
+
   constructor(
     private auth: AuthentificationService,
     private router: Router
-    ) { }
+  ) { }
 
   ngOnInit(): void {
   }
+
   connexion() {
     console.log(this.personne)
-      this.auth.checkData(this.personne).subscribe(
+    this.auth.checkData(this.personne).subscribe(
       res => {
         if (res) {
           localStorage.setItem('user', JSON.stringify(res));
@@ -31,5 +32,8 @@ export class ConnexionComponent implements OnInit {
         }
       }
     )
+  }
+  creationCompte() {
+    this.router.navigateByUrl('/compte/creation');
   }
 }
