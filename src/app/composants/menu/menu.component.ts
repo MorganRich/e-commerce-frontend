@@ -14,6 +14,8 @@ export class MenuComponent implements OnInit {
     recherche: ['', Validators.required],
   });
 
+  iconePanier: number = 0;
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -21,9 +23,15 @@ export class MenuComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+      const q = JSON.parse(localStorage.getItem('panier'))
+       this.iconePanier = q.length;
+    
   }
 
   rechercherLivre() {
     this.router.navigate(['/recherche/' + this.barreDeRecherche.get('recherche').value]);
   }
+
+
+
 }

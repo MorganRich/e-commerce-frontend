@@ -70,8 +70,8 @@
                       <form [formGroup]="articleForm" >
                       <!-- Modal Header -->
                       <div class="modal-header">
-                        <h4 class="modal-title"> {{ livre.titre }}</h4>
-                        <p class="isnb"> {{ livre.numISBN }}</p>
+                        <h4 class="modal-title"> {{ lignePanier.livres.titre }}</h4>
+                        <p class="isnb"> {{ lignePanier.livres.numISBN13 }}</p>
                         <button type="button" class="close" data-dismiss="modal" (click) = "hide()">&times;</button>
                       </div>
                       
@@ -100,7 +100,7 @@
                           
                       
                      
-                     <div>{{ livre.prixUnitaire}}€</div>
+                     <div>{{ lignePanier.livres.prixUnitaire }}€</div>
                       <button class="btn btn-primary" (click) = "ajouterPanier(livre)" ><i class="fas fa-shopping-cart"> Acheter</i></button>
                     </form>
                       <!-- Modal footer -->

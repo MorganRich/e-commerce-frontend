@@ -16,8 +16,9 @@ export class AffichageLivreComponent implements OnInit {
   panier: Panier = {};
   lignePanier: LignePanier = {
     quantiteArticle: 1,
-    referenceArticle: 0,
-    prixTotalLigne: 0
+   // referenceArticle: 0,
+    prixTotalLigne: 0,
+    livres : {}
   };
   livres: Livres[] = [];
   livre: Livres = {};
@@ -45,7 +46,7 @@ export class AffichageLivreComponent implements OnInit {
     return this.articleForm.get('quantite');
   }
   openModal(i) {
-    this.livre = i;
+    this.lignePanier.livres = i;
     this.showModal = true; // Show-Hide Modal Check
 
 
@@ -69,31 +70,37 @@ export class AffichageLivreComponent implements OnInit {
 
 
   ajouterPanier(livre) {
-    const lignesPanier = (() => {
-      const fieldValue = localStorage.getItem('panier');
-      return fieldValue === null ? [] : JSON.parse(fieldValue);
-    })();
-    if (lignesPanier.length == 0) {
-      lignesPanier.push({
-        quantiteArticle: this.lignePanier.quantiteArticle,
-        referenceArticle: this.livre.reference_article,
-        prixTotalLigne: this.lignePanier.quantiteArticle * this.livre.prixUnitaire
-      });
-    } else {
-      let l = lignesPanier.find(elt => elt.referenceArticle === this.livre.reference_article);
-      if (l) {
-        lignesPanier[lignesPanier.indexOf(l)].quantiteArticle += this.lignePanier.quantiteArticle
-        lignesPanier[lignesPanier.indexOf(l)].prixTotalLigne = lignesPanier[lignesPanier.indexOf(l)].quantiteArticle * this.livre.prixUnitaire
-      } else {
+
+    
+      const lignesPanier = (() => {
+        const fieldValue = localStorage.getItem('panier');
+        return fieldValue === null ? [] : JSON.parse(fieldValue);
+      })();
+      if (lignesPanier.length == 0) {
         lignesPanier.push({
           quantiteArticle: this.lignePanier.quantiteArticle,
-          referenceArticle: this.livre.reference_article,
-          prixTotalLigne: this.lignePanier.quantiteArticle * this.livre.prixUnitaire
+          referenceArticle: this.lignePanier.livres.reference_article,
+          prixTotalLigne: this.lignePanier.quantiteArticle * this.lignePanier.livres.prixUnitaire,
+          livres: this.lignePanier.livres,
         });
+      } else {
+        let l = lignesPanier.find(elt => elt.referenceArticle === this.lignePanier.livres.reference_article);
+        console.log(this.livre.reference_article)
+        if (l) {
+          lignesPanier[lignesPanier.indexOf(l)].quantiteArticle += this.lignePanier.quantiteArticle
+          lignesPanier[lignesPanier.indexOf(l)].prixTotalLigne = lignesPanier[lignesPanier.indexOf(l)].quantiteArticle * this.lignePanier.livres.prixUnitaire
+        } else {
+          lignesPanier.push({
+            quantiteArticle: this.lignePanier.quantiteArticle,
+            referenceArticle: this.lignePanier.livres.reference_article,
+            prixTotalLigne: this.lignePanier.quantiteArticle * this.lignePanier.livres.prixUnitaire,
+            livres: this.lignePanier.livres,
+          });
+        }
       }
+      localStorage.setItem('panier', JSON.stringify(lignesPanier));
     }
-    localStorage.setItem('panier', JSON.stringify(lignesPanier));
-  }
-
+  
+  
 
 }
