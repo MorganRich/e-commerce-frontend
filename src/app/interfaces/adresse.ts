@@ -5,5 +5,7 @@ export interface Adresse {
     complement?: string;
     codePostal?: string;
     ville?: string;
+
     idType? :number;
+
 }

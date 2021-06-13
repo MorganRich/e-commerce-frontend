@@ -27,13 +27,14 @@
     <div class="row">
         <div *ngFor='let l of resultatRecherche'
             class="card col-sm-4 align-items-center m-4 pt-3 bg-light carousel-inner" style="width:250px">
-            <img class="d-block w-100 card-img-top" src="assets/images/lesfleursdumal.jpg" alt="Card image"
+            <img class="d-block w-100 card-img-top" [src]="l.image" alt="Card image"
                 style="width:100%">
             <div class="card-body text-center">
                 <div class="fs-5 fw-bold">{{ l.titre }}</div>
                 <div class="fs-5 fst-italic">{{ l.prenom }} {{ l.nom }}</div>
                 <div class="fs-6">{{ l.type }} </div><br>
-                <btn class="btn btn-primary">Ajouter au panier</btn>
+                <button class="btn btn-success">Ajouter au panier</button>
+                <button class="btn btn-primary" (click)="afficherDetails(l.idLivre)">Détails</button>
             </div>
         </div>
     </div>

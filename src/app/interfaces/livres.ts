@@ -1,3 +1,6 @@
+import { Auteur } from "./auteur";
+import { Genre } from "./genre";
+
 export interface Livres {
     idLivre?: number;
     titre?: string;

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LignePanier } from 'src/app/interfaces/lignePanier';
 import { Livres } from 'src/app/interfaces/livres';
 import { Panier } from 'src/app/interfaces/panier';
@@ -16,9 +17,11 @@ export class AffichageLivreComponent implements OnInit {
   panier: Panier = {};
   lignePanier: LignePanier = {
     quantiteArticle: 1,
+
    // referenceArticle: 0,
     prixTotalLigne: 0,
     livres : {}
+
   };
   livres: Livres[] = [];
   livre: Livres = {};
@@ -28,7 +31,10 @@ export class AffichageLivreComponent implements OnInit {
   defaultQuantityValue: number = 1;
 
   showModal: boolean = false;
-  constructor(private livresService: LivresService) {
+  constructor(
+    private livresService: LivresService,
+    private router: Router
+  ) {
     this.articleForm.controls['quantite'].setValue(this.defaultQuantityValue, { onlySelf: true });
   }
 
@@ -46,7 +52,9 @@ export class AffichageLivreComponent implements OnInit {
     return this.articleForm.get('quantite');
   }
   openModal(i) {
-    this.lignePanier.livres = i;
+
+    this.lignePanier.livre = i;
+
     this.showModal = true; // Show-Hide Modal Check
 
 
@@ -55,7 +63,9 @@ export class AffichageLivreComponent implements OnInit {
   hide() {
     this.showModal = false;
   }
-
+  afficherDetails(idLivre: string) {
+    this.router.navigate(['/livres/' + idLivre]);
+  }
   IncQuantite(qtt) {
     if (this.lignePanier.quantiteArticle < 10)
       this.lignePanier.quantiteArticle = qtt + 1;
@@ -71,6 +81,7 @@ export class AffichageLivreComponent implements OnInit {
 
   ajouterPanier(livre) {
 
+
     
       const lignesPanier = (() => {
         const fieldValue = localStorage.getItem('panier');
@@ -82,6 +93,7 @@ export class AffichageLivreComponent implements OnInit {
           referenceArticle: this.lignePanier.livres.reference_article,
           prixTotalLigne: this.lignePanier.quantiteArticle * this.lignePanier.livres.prixUnitaire,
           livres: this.lignePanier.livres,
+
         });
       } else {
         let l = lignesPanier.find(elt => elt.referenceArticle === this.lignePanier.livres.reference_article);

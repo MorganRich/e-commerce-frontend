@@ -11,9 +11,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ResultatRechercheComponent } from './composants/resultat-recherche/resultat-recherche.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ConnexionComponent } from './composants/connexion/connexion.component';
+
 import { HttpClientModule } from '@angular/common/http';
-import { CreationCompteComponent } from './composants/creation-compte/creation-compte.component';
+
 import { CommandeComponent } from './composants/commande/commande.component';
+
+import { CreationCompteComponent } from './composants/creation-compte/creation-compte.component';
+import { PanierComponent } from './composants/panier/panier.component';
+import { CompteComponent } from './composants/compte/compte.component';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +30,12 @@ import { CommandeComponent } from './composants/commande/commande.component';
     ResultatRechercheComponent,
     ConnexionComponent,
     CreationCompteComponent,
+
     CommandeComponent,
+
+    PanierComponent,
+    CompteComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -33,8 +44,7 @@ import { CommandeComponent } from './composants/commande/commande.component';
     ReactiveFormsModule,
     HttpClientModule,
     NoopAnimationsModule,
-    MatButtonModule,
-    MatDialogModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

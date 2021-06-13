@@ -25,6 +25,7 @@ export class DetailsLivreComponent implements OnInit {
         console.log(this.livre);
       }
     );
+
   }
   IncQuantite() {
     if (this.quantiteArticle < this.livre.quantiteEnStock)
@@ -42,8 +43,8 @@ export class DetailsLivreComponent implements OnInit {
     if (lignesPanier.length == 0) {
       lignesPanier.push({
         quantiteArticle: this.quantiteArticle,
-        referenceArticle: this.livre.reference_article,
-        prixTotalLigne: this.quantiteArticle * this.livre.prixUnitaire
+        prixTotalLigne: this.quantiteArticle * this.livre.prixUnitaire,
+        livre: this.livre
       });
     } else {
       let l = lignesPanier.find(elt => elt.referenceArticle === this.livre.reference_article);
@@ -57,11 +58,12 @@ export class DetailsLivreComponent implements OnInit {
       } else {
         lignesPanier.push({
           quantiteArticle: this.quantiteArticle,
-          referenceArticle: this.livre.reference_article,
-          prixTotalLigne: this.quantiteArticle * this.livre.prixUnitaire
+          prixTotalLigne: this.quantiteArticle * this.livre.prixUnitaire,
+          livre: this.livre
         });
       }
     }
     localStorage.setItem('panier', JSON.stringify(lignesPanier));
   }
 }
+

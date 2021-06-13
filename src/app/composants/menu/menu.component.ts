@@ -9,7 +9,7 @@ import { LivresService } from 'src/app/services/livres.service';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-
+  auth: boolean = true;
   barreDeRecherche = this.fb.group({
     recherche: ['', Validators.required],
   });
@@ -20,7 +20,7 @@ export class MenuComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private livresService: LivresService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
       const q = JSON.parse(localStorage.getItem('panier'))
