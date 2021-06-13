@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Adresse } from '../interfaces/adresse';
 import { Personne } from '../interfaces/personne';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PersonneService {
-  private url = 'http://localhost:3000/personne/';
+  private url = 'http://localhost:3000/utilisateur/';
 
   constructor(private http: HttpClient) { }
   
@@ -24,5 +25,10 @@ export class PersonneService {
   }
   editPersonne(p: Personne) {
     return this.http.put<Personne>(this.url+p.id, p);
+  }
+
+  getBillingAdresse(idUtilisateur : number, idType: any) {
+    console.log(typeof(idType))
+    return this.http.get<Adresse>(this.url+"commande/adresse/"+ idUtilisateur, idType );
   }
 }

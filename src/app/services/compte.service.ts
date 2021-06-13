@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Adresse } from '../interfaces/adresse';
+
 import { Commande } from '../interfaces/commande';
+
 import { Personne } from '../interfaces/personne';
 
 @Injectable({
@@ -15,6 +17,15 @@ export class CompteService {
   addCompte(p: Personne) {
     return this.http.post<Personne>(this.url, p);
   }
+
+
+  searchAdresse(idUser: number) {
+    console.log(this.url + idUser + "/adresses");
+    return this.http.get<Array<Adresse>>(this.url + idUser + "/adresses");
+  }
+
+ 
+
   modifyCompte(p: Personne) {
     return this.http.put<Personne>(this.url + p.idUtilisateur, p);
   }
@@ -25,4 +36,5 @@ export class CompteService {
     console.log(this.url + "commande/" + idUser);
     return this.http.get<Array<Commande>>(this.url + "commande/" + idUser);
   }
+
 }

@@ -14,12 +14,14 @@ export class ResultatRechercheComponent implements OnInit {
   resultatRecherche: Livres[] = [];
   nbResultatRecherche: number = 0;
 
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
     private livresService: LivresService
   ) { }
+
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
       titre: [this.route.snapshot.params.param],
@@ -33,11 +35,14 @@ export class ResultatRechercheComponent implements OnInit {
         console.log(this.resultatRecherche);
       }
     );
+
   }
   afficherDetails(idLivre: string) {
     this.router.navigate(['/livres/' + idLivre]);
+
   }
   rechercherLivre() {
+
     this.livresService.searchByTitre(this.userForm.get('titre').value).subscribe(
       (res) => {
         this.resultatRecherche = res;
@@ -45,5 +50,5 @@ export class ResultatRechercheComponent implements OnInit {
         console.log(this.resultatRecherche);
       }
     );
-  }
+
 }
