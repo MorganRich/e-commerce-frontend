@@ -74,7 +74,7 @@ export class CompteComponent implements OnInit {
     this.compteService.searchCommandes(this.compte.idUtilisateur).subscribe(
       (res) => {
         this.commandes = res;
-        console.log(this.commandes[0].lignesCommande[0].nom);
+        console.log(this.commandes);
       }
     )
   }

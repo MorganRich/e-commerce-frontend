@@ -1,13 +1,9 @@
-
 import { LignePanier } from "./lignePanier";
 import { Personne } from "./personne";
 
 export interface Commande {
-
-    idUtilisateur? : number;
+    idUtilisateur?: number;
     referenceArticle?: number;
     prixTotalCommande?: number;
-    
-    lignesCommande? : LignePanier[];
-    
+    lignesCommande?: LignePanier[];
 }

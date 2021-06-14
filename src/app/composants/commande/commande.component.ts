@@ -22,78 +22,54 @@ export class CommandeComponent implements OnInit {
     //idType: 0 
   };
   adresseLivraison: Adresse = {
-  // idType: 1
+    // idType: 1
   };
-
   ligneCommande: LignePanier[] = [];
   commande: Commande = {
     idUtilisateur: 0,
     prixTotalCommande: 0,
     lignesCommande: [],
-
   };
-
-  missingAdresseMsg : string = '';
-  cbPayment : string = 'cb';
-  ppPayment : string = 'pp ';
-  fraisDePort : number = 5;
-  total : number = 0;
-
-
- 
-
+  missingAdresseMsg: string = '';
+  cbPayment: string = 'cb';
+  ppPayment: string = 'pp ';
+  fraisDePort: number = 5;
+  total: number = 0;
 
   constructor(private commandeService: CommandeService,
     private compteService: CompteService,
     private articleService: ArticleService,
-    private routeur: Router ) { }
+    private routeur: Router) { }
 
   ngOnInit(): void {
-
-   
-
-    this.personne.id = JSON.parse(localStorage.getItem('user')).idUtilisateur;
-    this.compteService.searchAdresse(this.personne.id).subscribe(
+    this.personne.idUtilisateur = JSON.parse(localStorage.getItem('user')).idUtilisateur;
+    this.compteService.searchAdresse(this.personne.idUtilisateur).subscribe(
       res => {
-        console.log(res , "res")
-        if(res[0] != null || undefined) {
-         
-        this.adresseFacturation = res[0];
-        console.log(this.adresseFacturation)
-         } else  {
+        console.log(res, "res")
+        if (res[0] != null || undefined) {
+          this.adresseFacturation = res[0];
+          console.log(this.adresseFacturation)
+        } else {
           this.missingAdresseMsg = "Ajoutez une adresse de facturation pour valider la commande"
         }
-        if(res[1] != null || undefined) {
-        this.adresseLivraison = res[1];
-        } else  {
+        if (res[1] != null || undefined) {
+          this.adresseLivraison = res[1];
+        } else {
           this.missingAdresseMsg = "Ajoutez une adresse de livraison pour valider la commande"
         }
-       
       });
-
-    
-
     this.commande.lignesCommande = JSON.parse(localStorage.getItem('panier'));
     for (let lp of this.commande.lignesCommande) {
       this.ligneCommande.push(lp)
       this.commande.prixTotalCommande += lp.prixTotalLigne;
-
     }
-
-    
   }
-
-
-
- 
   toggleEditable(event) {
-
-    if ( event.target.checked ) {
-       this.commandeService.addAdresse(this.personne.id, this.adresseFacturation.idAdresse, this.adresseFacturation).subscribe(
-         res => {
-          this.compteService.searchAdresse(this.personne.id).subscribe(
+    if (event.target.checked) {
+      this.commandeService.addAdresse(this.personne.idUtilisateur, this.adresseFacturation.idAdresse, this.adresseFacturation).subscribe(
+        res => {
+          this.compteService.searchAdresse(this.personne.idUtilisateur).subscribe(
             res => {
-            
               this.adresseLivraison.codePostal = res[1].codePostal;
               this.adresseLivraison.complement = res[1].complement;
               this.adresseLivraison.idAdresse = res[1].idAdresse;
@@ -102,26 +78,21 @@ export class CommandeComponent implements OnInit {
               this.adresseLivraison.ville = res[1].ville;
               this.adresseLivraison.idType = res[1].idType;
             });
-         }
-       )
-       
-   }
-}
-
-
+        }
+      )
+    }
+  }
   qttyCheck() {
-
     this.commande.lignesCommande = this.ligneCommande
-    this.commande.idUtilisateur = this.personne.id;
+    this.commande.idUtilisateur = this.personne.idUtilisateur;
+    console.log(this.commande);
     for (let l of this.commande.lignesCommande) {
       this.commande.prixTotalCommande += l.prixTotalLigne;
-      
     }
-
     this.total = this.commande.prixTotalCommande + this.fraisDePort;
     return new Promise(resolve => {
       this.commande.lignesCommande.forEach(elt => {
-        this.articleService.getQuantiteById(elt.livres.reference_article).pipe()
+        this.articleService.getQuantiteById(elt.livre.reference_article).pipe()
           .subscribe(
             resp => {
               this.commande.lignesCommande[this.commande.lignesCommande.indexOf(elt)].quantiteEnStock = resp.quantiteEnStock;
@@ -130,20 +101,17 @@ export class CommandeComponent implements OnInit {
       })
     })
   }
-
-
-
   commander() {
-
     let b: boolean[] = []
     this.qttyCheck().then((resp) => {
       this.commande.lignesCommande.some(elt => {
         b.push(elt.quantiteArticle > elt.quantiteEnStock)
       })
       let f = b.find(elt => elt = true);
-      if (f) {   
+      if (f) {
         this.routeur.navigateByUrl('/'); //url du panier
       } else {
+        console.log(this.commande);
         this.commandeService.commander(this.commande).subscribe(
           res => {
             this.commande.lignesCommande[b.indexOf(f)].quantiteEnStock -= this.commande.lignesCommande[b.indexOf(f)].quantiteArticle;
@@ -151,9 +119,6 @@ export class CommandeComponent implements OnInit {
             this.routeur.navigateByUrl('/');
           });
       }
-
     })
-   
   }
-
 }

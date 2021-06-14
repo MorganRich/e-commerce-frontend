@@ -35,14 +35,11 @@ export class ResultatRechercheComponent implements OnInit {
         console.log(this.resultatRecherche);
       }
     );
-
   }
   afficherDetails(idLivre: string) {
     this.router.navigate(['/livres/' + idLivre]);
-
   }
   rechercherLivre() {
-
     this.livresService.searchByTitre(this.userForm.get('titre').value).subscribe(
       (res) => {
         this.resultatRecherche = res;
@@ -50,5 +47,5 @@ export class ResultatRechercheComponent implements OnInit {
         console.log(this.resultatRecherche);
       }
     );
-
+  }
 }

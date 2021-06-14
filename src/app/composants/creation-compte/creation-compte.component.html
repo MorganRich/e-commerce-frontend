@@ -1,29 +1,33 @@
 <h3 class="mt-2" *ngIf="!modif">Création d'un compte</h3>
-<form *ngIf="!modif" class="form-group" [formGroup]="compteForm" (ngSubmit)='ajouterCompte()'>
-    <div>
-        <label for="nom">Nom :</label>
-        <input id="nom" class="form-control" type="text" formControlName="nom">
-    </div>
-    <!-- <div class="erreur" *ngIf="nom?.invalid && (nom?.dirty || nom?.touched)">
+<form *ngIf="!modif" class="container form-group" [formGroup]="compteForm" (ngSubmit)='ajouterCompte()'>
+    <div class="row">
+        <div class="col-6">
+            <label for="nom">Nom :</label>
+            <input id="nom" class="form-control" type="text" formControlName="nom">
+        </div>
+        <!-- <div class="erreur" *ngIf="nom?.invalid && (nom?.dirty || nom?.touched)">
         <div *ngIf="nom?.errors?.required">Le nom est obligatoire</div>
-    </div> -->
-    <div>
-        <label for="prenom">Prénom :</label>
-        <input id="prenom" class="form-control" type="text" formControlName="prenom">
-    </div>
-    <!-- <div class="erreur" *ngIf="prenom?.invalid && (prenom?.dirty || prenom?.touched)">
+        </div> -->
+        <div class="col-6">
+            <label for="prenom">Prénom :</label>
+            <input id="prenom" class="form-control" type="text" formControlName="prenom">
+        </div>
+        <!-- <div class="erreur" *ngIf="prenom?.invalid && (prenom?.dirty || prenom?.touched)">
         <div *ngIf="prenom?.errors?.required">Le prénom est obligatoire</div>
-    </div> -->
-    <div>
-        <label for="email">Email :</label>
-        <input id="email" class="form-control" type="email" formControlName="email">
+        </div> -->
     </div>
-    <!-- <div class="erreur" *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+    <div class="row">
+        <div class="col-6">
+            <label for="email">Email :</label>
+            <input id="email" class="form-control" type="email" formControlName="email">
+        </div>
+        <!-- <div class="erreur" *ngIf="email?.invalid && (email?.dirty || email?.touched)">
         <div *ngIf="email?.errors?.required">L'adresse mail est obligatoire</div>
-    </div> -->
-    <div>
-        <label for="motDePasse">Mot de passe :</label>
-        <input id="motDePasse" class="form-control" type="email" formControlName="motDePasse">
+        </div> -->
+        <div class="col-6" >
+            <label for="motDePasse">Mot de passe :</label>
+            <input id="motDePasse" class="form-control" type="password" formControlName="motDePasse">
+        </div>
     </div>
     <div class="row">
         <div formArrayName="adresses">
