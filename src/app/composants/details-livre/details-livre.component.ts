@@ -25,6 +25,7 @@ export class DetailsLivreComponent implements OnInit {
         console.log(this.livre);
       }
     );
+
   }
   IncQuantite() {
     if (this.quantiteArticle < this.livre.quantiteEnStock)
@@ -65,3 +66,4 @@ export class DetailsLivreComponent implements OnInit {
     localStorage.setItem('panier', JSON.stringify(lignesPanier));
   }
 }
+

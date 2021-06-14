@@ -1,0 +1,110 @@
+
+
+.cont {
+
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr 2fr 1fr;
+    margin-top: 10vh;
+    border: 1px solid black;
+   
+   
+}
+
+p {
+    font-weight: bold;
+}
+
+.commandeVal  {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+}
+
+.title {
+    display: grid;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: larger;
+    justify-content: center;
+    
+}
+
+.modeDePaiement > div {
+
+    margin-block: 10%;
+}
+
+.cbDiv {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.cbChoice {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;   
+}
+
+.fab {
+    margin-left: 30%;
+   
+}
+
+.radio {
+    padding-left: 30%;
+}
+
+#logoVisa {
+
+    color: blue;
+}
+
+#logoMc {
+
+    color: orange;
+}
+
+#logoAmex {
+
+    color: goldenrod;
+}
+
+
+#logoPp{
+
+    color: blue;
+}
+
+#ppDiv {
+padding-left:10%;
+
+}
+
+.lignesCommande  {
+display: grid;
+grid-template-rows: repeat(2, 1fr);
+}
+
+.intCol  {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0.5vw;
+    font-weight: bold;
+}
+
+.artDiv{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+}
+
+.detailsArticle > div {
+    padding: 0.5vw;
+    box-shadow: 0.2px 0.2px  #888888;
+
+}
+
+.calculTotal {
+
+    display: grid;
+    justify-content: end;    
+}
