@@ -25,7 +25,6 @@ export class DetailsLivreComponent implements OnInit {
         console.log(this.livre);
       }
     );
-
   }
   IncQuantite() {
     if (this.quantiteArticle < this.livre.quantiteEnStock)
@@ -47,7 +46,7 @@ export class DetailsLivreComponent implements OnInit {
         livre: this.livre
       });
     } else {
-      let l = lignesPanier.find(elt => elt.referenceArticle === this.livre.reference_article);
+      let l = lignesPanier.find(elt => elt.livre.reference_article === this.livre.reference_article);
       if (l) {
         if (l.quantiteArticle + this.quantiteArticle <= this.livre.quantiteEnStock) {
           lignesPanier[lignesPanier.indexOf(l)].quantiteArticle += this.quantiteArticle

@@ -11,7 +11,7 @@ import { CompteService } from 'src/app/services/compte.service';
 })
 export class CreationCompteComponent implements OnInit {
   compte: Personne = {}
-  newCompte : Personne = {}
+  newCompte: Personne = {}
   modif: boolean = false;
 
   compteForm = this.fb.group({
@@ -78,15 +78,16 @@ export class CreationCompteComponent implements OnInit {
   }
   ajouterCompte() {
     this.compte = this.compteForm.value;
-    console.log(this.compte);
     this.compteService.addCompte(this.compte).subscribe(
       (res) => {
-        console.log(res);
+        if (res) {
+          localStorage.setItem('user', JSON.stringify(res));
+          this.router.navigateByUrl('/livres');
+        }
       }
     )
   }
   modifierCompte() {
-    console.log(this.compte);
     this.newCompte = this.compteForm.value;
     this.newCompte.idUtilisateur = this.compte.idUtilisateur;
     console.log(this.newCompte);

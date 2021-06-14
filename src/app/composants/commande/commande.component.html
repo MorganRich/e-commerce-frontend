@@ -1,99 +1,89 @@
 <div class="cont">
-    <div *ngIf="ligneCommande.length == 0 ; else mainElse"> 
+    <div *ngIf="ligneCommande.length == 0 ; else mainElse">
         <div>Shopping cart is empty</div>
-
     </div>
     <ng-template #mainElse>
-    <div class="title"> Validation de commande</div>
-    <div class="commandeVal">
-        <div class="adresseDeLivraison">
-            <p>Adresse de Livraison</p>
-            <div *ngIf="adresseLivraison.ville == undefined ; else alElse"> 
-                <div> {{ missingAdresseMsg }}</div>
-                <a href="/ajouterAdresseLivraison">Ajouter une adresse de livraison</a>
-                <label for="scales">Faire de mon adresse de facturation mon adresse de livraison</label>
-                <input type="checkbox" (change)="toggleEditable($event)">
-              
+        <div class="title"> Validation de commande</div>
+        <div class="commandeVal">
+            <div class="adresseDeLivraison">
+                <p>Adresse de Livraison</p>
+                <div *ngIf="adresseLivraison.ville == undefined ; else alElse">
+                    <div> {{ missingAdresseMsg }}</div>
+                    <a href="/ajouterAdresseLivraison">Ajouter une adresse de livraison</a>
+                    <label for="scales">Faire de mon adresse de facturation mon adresse de livraison</label>
+                    <input type="checkbox" (change)="toggleEditable($event)">
                 </div>
                 <ng-template #alElse>
-            <div> {{ adresseLivraison.numRue }}, {{ adresseLivraison.typeDeVoie }}</div>
-            <div> {{ adresseLivraison.codePostal}}</div>
-            <div> {{ adresseLivraison.ville}}</div>
-            <a href="/modifierAdresseLivraison">modifier</a>
+                    <div> {{ adresseLivraison.numRue }}, {{ adresseLivraison.typeDeVoie }}</div>
+                    <div> {{ adresseLivraison.codePostal}}</div>
+                    <div> {{ adresseLivraison.ville}}</div>
+                    <a href="/modifierAdresseLivraison">modifier</a>
                 </ng-template>
-        </div>
-        <div class="modeDePaiement">
-            <p>Mode de paiement</p>
-            <div class="cbDiv">
-                <div>Carte bancaire</div>
-                <div class="cbChoice">
-                    <div class="radio">
-                        <input type="radio" ng-model="cbPayement" id="visa" name="pay" value="{{ cbPayement }}">
-                        <label for="visa"><i id="logoVisa" class="fab fa-cc-visa fa-lg"></i></label>
-                    </div>
-
-                    <div class="radio">
-                        <input type="radio" ng-model="cbPayement" id="mc" name="pay" value="{{ cbPayement }}">
-                        <label for="mc"><i id="logoMc" class="fab fa-cc-mastercard fa-lg"></i></label>
-                    </div>
-
-                    <div class="radio">
-                        <input type="radio" ng-model="cbPayement" id="amex" name="pay" value="{{ cbPayement }}">
-                        <label for="amex"><i id="logoAmex" class="fab fa-cc-amex fa-lg"></i></label>
+            </div>
+            <div class="modeDePaiement">
+                <p>Mode de paiement</p>
+                <div class="cbDiv">
+                    <div>Carte bancaire</div>
+                    <div class="cbChoice">
+                        <div class="radio">
+                            <input type="radio" ng-model="cbPayement" id="visa" name="pay" value="{{ cbPayement }}">
+                            <label for="visa"><i id="logoVisa" class="fab fa-cc-visa fa-lg"></i></label>
+                        </div>
+                        <div class="radio">
+                            <input type="radio" ng-model="cbPayement" id="mc" name="pay" value="{{ cbPayement }}">
+                            <label for="mc"><i id="logoMc" class="fab fa-cc-mastercard fa-lg"></i></label>
+                        </div>
+                        <div class="radio">
+                            <input type="radio" ng-model="cbPayement" id="amex" name="pay" value="{{ cbPayement }}">
+                            <label for="amex"><i id="logoAmex" class="fab fa-cc-amex fa-lg"></i></label>
+                        </div>
                     </div>
                 </div>
+                <div>Paypal</div>
+                <div id="ppDiv" class="radio">
+                    <input type="radio" id="pp" name="pay" value="pp">
+                    <label for="pp"><i id="logoPp" class="fab fa-cc-paypal fa-lg"></i></label>
+                </div>
             </div>
-
-            <div>Paypal</div>
-            <div id="ppDiv" class="radio">
-                <input type="radio" id="pp" name="pay" value="pp">
-                <label for="pp"><i id="logoPp" class="fab fa-cc-paypal fa-lg"></i></label>
-            </div>
-        </div>
-        <div class="adresseDeFacturation">
-            <p>Adresse de facturation</p>
-            <div *ngIf="adresseFacturation.ville === undefined || null; else afElse"> 
-                <div> {{ missingAdresseMsg }}</div>
+            <div class="adresseDeFacturation">
+                <p>Adresse de facturation</p>
+                <div *ngIf="adresseFacturation.ville === undefined || null; else afElse">
+                    <div> {{ missingAdresseMsg }}</div>
                 </div>
                 <ng-template #afElse>
-            <div> {{ adresseFacturation.numRue }}, {{ adresseFacturation.typeDeVoie }}</div>
-            <div> {{ adresseFacturation.codePostal}}</div>
-            <div> {{ adresseFacturation.ville}}</div>
-            <a href="/modifierAdresseFacturation">modifier</a>
+                    <div> {{ adresseFacturation.numRue }}, {{ adresseFacturation.typeDeVoie }}</div>
+                    <div> {{ adresseFacturation.codePostal}}</div>
+                    <div> {{ adresseFacturation.ville}}</div>
+                    <a href="/modifierAdresseFacturation">modifier</a>
                 </ng-template>
-        </div>
-    </div>
-
-
-
-
-    <div class="title"> Détail de la commande</div>
-    <div class="lignesCommandes">
-        <div class="intCol">
-            <div>Article</div>
-            <div>Prix unitaire</div>
-            <div>Quantité</div>
-            <div>Total ligne</div>
-        </div>
-
-        <div *ngFor='let lc of ligneCommande' class="detailsArticle">
-            <div class="artDiv">
-                <div>{{ lc.livres.titre }}</div>
-                <div>{{ lc.livres.prixUnitaire }}</div>
-                <div>{{ lc.quantiteArticle }}</div>
-                <div>{{ lc.prixTotalLigne }}</div>
             </div>
         </div>
-        <div class="calculTotal">
-            <div class="ssTotal"> Sous-total: {{ commande.prixTotalCommande }} €</div>
-            <div class="fraisDePort"> Frais de port: {{ fraisDePort }} €</div>
-            <div class="total"> Total: {{  commande.prixTotalCommande + fraisDePort }} €</div>
+        <div class="title"> Détail de la commande</div>
+        <div class="lignesCommandes">
+            <div class="intCol">
+                <div>Article</div>
+                <div>Prix unitaire</div>
+                <div>Quantité</div>
+                <div>Total ligne</div>
+            </div>
+            <div *ngFor='let lc of commande.lignesCommande' class="detailsArticle">
+                <div class="artDiv">
+                    <div>{{ lc.livre.nom }}</div>
+                    <div>{{ lc.livre.prixUnitaire }}</div>
+                    <div>{{ lc.quantiteArticle }}</div>
+                    <div>{{ lc.prixTotalLigne }}</div>
+                </div>
+            </div>
+            <div class="calculTotal">
+                <div class="ssTotal"> Sous-total: {{ commande.prixTotalCommande }} €</div>
+                <div class="fraisDePort"> Frais de port: {{ fraisDePort }} €</div>
+                <div class="total"> Total: {{ commande.prixTotalCommande + fraisDePort }} €</div>
+            </div>
         </div>
-    </div>
-  <div><button class="btn btn-primary" (click)="commander()" [disabled]="click || (adresseLivraison.idType == undefined  || adresseFacturation.idType == undefined)">Commander
-  </button>
-  <button class="btn">Retour</button>
-
-</div> 
-</ng-template>
+        <div><button class="btn btn-primary" (click)="commander()"
+                [disabled]="click || (adresseLivraison.idType == undefined  || adresseFacturation.idType == undefined)">Commander
+            </button>
+            <button class="btn">Retour</button>
+        </div>
+    </ng-template>
 </div>
